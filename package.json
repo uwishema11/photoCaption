@@ -8,7 +8,7 @@
     "dev": "nodemon -r esm ./src/index.js",
     "migration": "npx sequelize-cli db:migrate",
     "down": "npx sequelize-cli db:migrate:undo:all",
-    "seed": "npx sequelize-cli db:seed:all",
+    "seed": "npx -r esm sequelize-cli db:seed:all",
     "test": "npm run migration && npm run seed && mocha --require @babel/register  --timeout 60000 --exit && npm run down",
     "lint": "prettier --check .",
     "format": "prettier --write"
