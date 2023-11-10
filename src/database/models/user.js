@@ -12,35 +12,22 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       User.hasMany(models.Caption, {
-        foreignKey: 'captionId',
+        foreignKey: 'userId',
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
       }),
-      User.hasMany(models.Photo, {
-        foreignKey:'photoId',
+      User.hasMany(models.Image, {
+        foreignKey:'userId',
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
       })
     }
   }
   User.init({
-    firstName: {
-      type:DataTypes.STRING,
-      allowNull: false
-    },
-    lastName:{
-      type:DataTypes.STRING,
-      allowNull: false
-    },
-    email: {
-      type:DataTypes.STRING,
-      unique: true,
-      allowNull:false
-    },
-    password: {
-      type : DataTypes.STRING ,
-      allowNull:false
-    }
+    firstName: DataTypes.STRING,
+    lastName: DataTypes.STRING,
+    email: DataTypes.STRING,
+    password: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'User',

@@ -12,22 +12,17 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Caption.belongsTo(models.User, {
-        foreignKey: 'captionId',
+        foreignKey: 'userId',
         as: 'users'
       })
-      Caption.belongsTo(models.Photo, {
-        foreignKey: 'captionId',
+      Caption.belongsTo(models.Image, {
+        foreignKey: 'imageId',
         as: 'photos'
       })
     }
-
   }
   Caption.init({
-    captionText: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    dateCreated: DataTypes.DATE
+    text: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Caption',
