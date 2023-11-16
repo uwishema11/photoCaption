@@ -17,8 +17,7 @@ exports.uploadImg = multer({storage: storage}).single('url');
 
 exports.createImage = async (req, res) => {
   try {
-    console.log(req.body)
-    console.log(req.file)
+    
     const picture = req.file;
     
     if (!picture) {
@@ -32,6 +31,7 @@ exports.createImage = async (req, res) => {
     req.body = {
       ...req.body,
       url: req.file.path,
+      userId:req.user.id
     }
 
     const createdPhoto = await imageService.addImage(req.body);
@@ -47,3 +47,5 @@ exports.createImage = async (req, res) => {
     });
   }
 };
+
+

@@ -1,4 +1,5 @@
 
+const { generateAccessToken } = require('../helpers/generateToken');
 const userService = require('../services/userService');
 const bcrypt = require('bcrypt');
 
@@ -74,9 +75,13 @@ exports.login = async(req,res) =>{
                 message: 'Wrong email or Paswword'
             })
         };
+
+        const token = await generateAccessToken(user);
+
         return res.status(201).json({
             success: true,
-            message: 'logged in successfully'
+            message: 'logged in successfully',
+            accessToken: token
         })
     }
     catch(error){

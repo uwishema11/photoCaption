@@ -1,5 +1,5 @@
 
-import models from '../database/models'
+const models = require('../database/models');
 
 const addCaption = async(createdCaption)=>{
     
@@ -38,7 +38,7 @@ const deleteCaption = async(id) =>{
     });
 };
 
-export {
+module.exports =  {
     addCaption,
     findAllCaption,
     findCaptionById,
