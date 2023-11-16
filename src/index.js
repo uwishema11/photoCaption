@@ -1,23 +1,21 @@
-
-import app from './app';
-import sequelize from './database/config/database'
-import dotenv from 'dotenv';
+const app = require('./app.js');
+const sequelize = require('./database/config/database.js');
+const dotenv = require('dotenv');
 dotenv.config();
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT;
 
-const connectToDatabase =async()=>{
-    try{
-        await sequelize.authenticate();
-        console.log('connected to database successfully')
-    }
-    catch(error){
-        console.log("unable to connect to database",error)
-        console.log(error)
-    }
+const connectToDatabase = async () => {
+  try {
+    await sequelize.authenticate();
+    console.log('Connected to the database successfully');
+  } catch (error) {
+    console.log('Unable to connect to the database', error);
+    console.log(error);
+  }
 };
-connectToDatabase();
 
+connectToDatabase();
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

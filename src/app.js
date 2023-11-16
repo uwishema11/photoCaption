@@ -1,8 +1,14 @@
+const express = require('express');
+const morgan = require('morgan');
 
-import express from  'express';
+const imageRouter = require('./routes/imageRouter.js');
+const userRouter = require('./routes/userRouter.js');
 
-const app= express();
+const app = express();
 app.use(express.json());
+app.use(morgan('dev'));
+app.use('/api/v1/user',userRouter)
+app.use('/api/v1/image', imageRouter);
 
 
-export default app;
+module.exports = app;
