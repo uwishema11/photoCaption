@@ -10,8 +10,14 @@ const addCaption = async(createdCaption)=>{
 const findAllCaption =async()=>{
     const allCaptions = await models.Caption.findAll({
         include: [{
-            models: User,
-            as:users
+             model: models.User,
+            attributes: ['firstName'],
+            as:'users'
+        }],
+        include: [{
+             model: models.Image,
+            attributes: ['firstName'],
+            as:'photos'
         }]
     });
     return allCaptions;
@@ -19,7 +25,7 @@ const findAllCaption =async()=>{
 
 const findCaptionById = async (id) =>{
     const caption = await models.Caption.findOne({
-        where: id
+        where: {id}
     });
     return caption;
 } ;
@@ -34,7 +40,7 @@ const updateCaption = async(id,captionInfo) =>{
 
 const deleteCaption = async(id) =>{
     return await models.Caption.destroy({
-        where: id
+        where: {id}
     });
 };
 

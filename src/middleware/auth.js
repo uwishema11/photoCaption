@@ -8,13 +8,13 @@ exports.checkAuth = async (req,res,next) =>{
     
     //verify if there is token
      if(!token){
-        return res.status(401).json({success: false, error:'Access dinied'})
+        return res.status(401).json({success: false, error:'Login first before applying this action'})
      };
 
      const result = await verifyAccessToken(token);
 
      if(!result.success){
-        return res.status(403).json({success: false, error:'denied'})
+        return res.status(403).json({success: false, error:'Login first before applying this action'})
      };
      
      req.user = result.data;

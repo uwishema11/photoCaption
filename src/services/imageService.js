@@ -8,30 +8,34 @@ const addImage = async (image) => {
 
 const deleteImage = async (id) => {
     return await models.Image.destroy({
-        where: id
+        where: {id}
     });
 };
 
 const findAllImages = async () => {
-    const allImages = await models.Image.findAll({
-
-    });
+    const allImages = await models.Image.findAll();
     return allImages;
 };
 
 const findImageById = async (id) => {
     const image = await models.Image.findOne({
-        where: id,
+        where: {id},
         include: [{
-            model: User,
+            model: models.User,
+            attributes: ['firstName'],
             as: 'users'
-        }]
+        }],
+        // include: [{
+        //     model: models.Caption,
+        //     as: 'captions'
+        // }],
+        attributes: { exclude: ['createdAt', 'updatedAt'] }
     });
     return image;
 };
 
-const updateImage = async (id, image) => {
-    return await models.Image.update(image, {
+const updateImage = async (id, data) => {
+    return await models.Image.update(data, {
         where: { id },
         returning: true,
         row: true
