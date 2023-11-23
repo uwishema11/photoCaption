@@ -7,9 +7,7 @@
     "start": "node ./src/index.js",
     "dev": "nodemon ./src/index.js",
     "migration": "npx sequelize-cli db:migrate",
-    "down": "npx sequelize-cli db:migrate:undo",
-    "build": "babel ./src/index.js -d build",
-    "test": "mocha --require @babel/register --timeout 60000 --exit ./src/tests/**/*.js"
+    "down": "npx sequelize-cli db:migrate:undo"
   },
   "keywords": [],
   "author": "",
