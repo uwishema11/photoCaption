@@ -16,7 +16,6 @@ const findAllCaption =async()=>{
         }],
         include: [{
              model: models.Image,
-            attributes: ['firstName'],
             as:'photos'
         }]
     });
