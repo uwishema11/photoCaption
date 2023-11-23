@@ -6,8 +6,10 @@
   "scripts": {
     "start": "node ./src/index.js",
     "dev": "nodemon ./src/index.js",
+    "prod": "node ./src/index.js",
     "migration": "npx sequelize-cli db:migrate",
-    "down": "npx sequelize-cli db:migrate:undo"
+    "down": "npx sequelize-cli db:migrate:undo",
+    "predeploy": "npm run migration"
   },
   "keywords": [],
   "author": "",
