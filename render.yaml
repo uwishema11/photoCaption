@@ -1,0 +1,5 @@
+
+version: 0
+services:
+  - name: your-app
+    buildCommand: npm install && npm run migrate && npm run start
