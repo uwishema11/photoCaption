@@ -49,7 +49,6 @@ exports.registerUser = async (req,res)=>{
 
 exports.login = async(req,res) =>{
     try{
-        console.log("hello")
        
         const {email , password} = req.body;
         if(!email && !password){
@@ -58,10 +57,9 @@ exports.login = async(req,res) =>{
                 message:'Please fill empty fields'
             })
         };
-        const user = await userService.findUserByEmail(email)
-         console.log(user.id)
         
-
+        const user = await userService.findUserByEmail(email)
+        
         if(!user) {
             return res.status(401).json({
                 message: 'Wrong email or Paswword'

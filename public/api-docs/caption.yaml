@@ -1,0 +1,101 @@
+definitions:
+  caption:
+    type: object
+    required:
+      - imageId
+      - userId
+      - text
+    properties:
+      imageId:
+        type: integer
+      userId:
+        type: integer
+      text:
+        type: string
+paths:
+  /api/v1/caption/{id}:
+    post:
+      tags:
+        - Captions
+      summary: New Caption
+      parameters:
+        - in: path
+          name: imagaId
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/definitions/caption'
+      responses:
+        '200':
+          description: Caption is successfully saved
+        '500':
+          description: Internal server error
+        '404':
+          description: request not found
+        '401':
+          description: unauthorized
+        '400':
+          description: Bad request
+  /api/v1/caption:
+    get:
+      tags:
+        - Captions
+      summary: All Captions
+      responses:
+        '200':
+          description: Caption is successfully saved
+        '500':
+          description: Internal server error
+        '404':
+          description: request not found
+        '401':
+          description: unauthorized
+        '400':
+          description: Bad request
+  /api/v1/caption/delete/{id}:
+    delete:
+      tags:
+        - Captions
+      summary: delete Caption
+      parameters:
+        - in: path
+          name: captionId
+      responses:
+        '201':
+          description: Caption is successfully deleted
+        '500':
+          description: Internal server error
+        '404':
+          description: request not found
+        '401':
+          description: unauthorized
+        '400':
+          description: Bad request
+  /api/v1/caption/update/{id}:
+    patch:
+      tags:
+        - Captions
+      summary: update caption
+      parameters:
+        - in: path
+          name: captionId
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              $ref: '#/definitions/caption'
+      responses:
+        '201':
+          description: Caption is successfully saved
+        '500':
+          description: Internal server error
+        '404':
+          description: request not found
+        '401':
+          description: unauthorized
+        '400':
+          description: Bad request

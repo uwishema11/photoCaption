@@ -7,8 +7,8 @@ const router = express.Router();
 
 router.post('/:id',checkAuth,captionController.createCaption);
 router.patch('/:imageId/:id',checkAuth,captionController.updateCaption);
-router.get('/',checkAuth,captionController.findAllCaptions);
-router.delete('/:id',checkAuth,captionController.deleteCaption);
+router.get('/',captionController.findAllCaptions);
+router.delete('/:id',captionController.deleteCaption);
 
 
 

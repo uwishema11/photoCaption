@@ -5,13 +5,12 @@ const imageService = require('../services/imageService')
 
 exports.createCaption = async(req,res) =>{
     try{
-
         const body ={
             ...req.body,
             userId:req.user.id,
             imageId: req.params.id
         };
-        const {error} = captionSchema.validate(req.body)
+        const {error} = captionSchema.validate(body)
         if(error){
             return res.status(400).json({
                 success: false,

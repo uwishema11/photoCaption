@@ -1,0 +1,99 @@
+
+definitions:
+  image:
+    type: object
+    required:
+      - userId
+      - url
+    properties:
+      userId:
+        type: integer
+      description:
+        type: string
+      url:
+        type: string
+paths:
+  /api/v1/image/create/{id}:
+    post:
+      tags:
+        - Images
+      summary: New Image
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              $ref: '#/definitions/image'
+      responses:
+        '200':
+          description: Image is successfully saved
+        '500':
+          description: Internal server error
+        '404':
+          description: request not found
+        '401':
+          description: unauthorized
+        '400':
+          description: Bad request
+  /api/v1/image:
+    get:
+      tags:
+        - Images
+      summary: All Images
+      responses:
+        '200':
+          description: Image is successfully saved
+        '500':
+          description: Internal server error
+        '404':
+          description: request not found
+        '401':
+          description: unauthorized
+        '400':
+          description: Bad request
+  /api/v1/image/delete/{id}:
+    delete:
+      tags:
+        - Images
+      summary: delete Image
+      parameters:
+        - in: path
+          name: imageId
+      responses:
+        '200':
+          description: Image is successfully deleted
+        '500':
+          description: Internal server error
+        '404':
+          description: request not found
+        '401':
+          description: unauthorized
+        '400':
+          description: Bad request
+  /api/v1/accomodation/update/{id}:
+    patch:
+      tags:
+        - Images
+      summary: update image
+      parameters:
+        - in: path
+          name: imageId
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              $ref: '#/definitions/image'
+      responses:
+        '200':
+          description: Image is successfully updated
+        '500':
+          description: Internal server error
+        '404':
+          description: request not found
+        '401':
+          description: unauthorized
+        '400':
+          description: Bad request
